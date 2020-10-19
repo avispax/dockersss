@@ -8,3 +8,6 @@ dockerはdocker-compose.ymlを使いながらやろうかな。
 
 ## とりあえずpython3を適当に定義。
 
+## Rustもこっちに移植。
+
+Docker-composeはまだ作ってないけど。
