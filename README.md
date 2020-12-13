@@ -1,16 +1,16 @@
 # dockersss
 
-dockerで単発モノはとりあえずここからスタートして、大きくなってきたら別リポジトリとか、そういう使い方用のリポジトリ。
-dockerはdocker-compose.ymlを使いながらやろうかな。
+docker で単発モノはとりあえずここからスタートして、大きくなってきたら別リポジトリとか、そういう使い方用のリポジトリ。
+docker は docker-compose.yml を使いながらやろうかな。
 
-そういう性質でやるので、Dockerfileとそのデータは各ディレクトリ内だけで完結してくれると助かるっす。
-プロセス単位でなんか連携するとかならData部を外に出してもいいけど。
+そういう性質でやるので、Dockerfile とそのデータは各ディレクトリ内だけで完結してくれると助かるっす。
+プロセス単位でなんか連携するとかなら Data 部を外に出してもいいけど。
 
-## 1 : とりあえずpython3を適当に定義。
+## 1 : とりあえず python3 を適当に定義。
 
-## 2 : Rustもこっちに移植。
+## 2 : Rust もこっちに移植。
 
-Docker-composeはまだ作ってないけど。
+Docker-compose はまだ作ってないけど。
 
 ## 3 : mySQL を触りたいので追加。
 
@@ -21,18 +21,43 @@ Docker-composeはまだ作ってないけど。
 3. docker-compose ps
 4. docker-compose exec mySQL bash
 
-### 3-2 : mySQLを動かす
+### 3-2 : mySQL を動かす
 
 1. mysql -u docker -p
-2. docker   ←パスワード入力
+2. docker ← パスワード入力
 3. show databases;
 4. show tables;
 
-3.はあると思うけど、4は0件のハズ。
+3.はあると思うけど、4 は 0 件のハズ。
 
 ### 3-3 : A5m2 で遊ぶ
 
-1. 3-2 に接続する。とりあえずまずはroot/rootで。
-2. mysql_dbとかいうあたりの テーブル users で docker ユーザーの権限を全部rootとお揃いにする。
-3. docker/dockerで入り直す。
+1. 3-2 に接続する。とりあえずまずは root/root で。
+2. mysql_db とかいうあたりの テーブル users で docker ユーザーの権限を全部 root とお揃いにする。
+3. docker/docker で入り直す。
 4. 好きに遊ぶ。
+
+## 4 : VueCli + TypeScript 環境で、TypeScript を中心に遊ぶ。
+
+しかしうちの PC はモニターが綺麗だ。マジで。うっとりする。
+
+### 4-1 : とりあえず docker-compose.yml を定義する。
+
+まずはここから。  
+ド定番に docker-compose.yml と Dockerfile を定義する。
+
+### 4-2 : docker 操作
+
+- docker-compose build vuecli
+- docker-compose up -d vuecli
+- docker-compose ps
+- docker-compose exec vuecli ash
+
+alpine は bash ではなく ash 採用なので。
+
+### 4-3 : alpine 内に vue 環境作成
+
+- vue create my-test
+- cd my-test
+- npm install
+- npm run server

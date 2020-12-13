@@ -4,13 +4,13 @@ services:
     container_name: python3
     restart: always
     build: ./python3
-    working_dir: '/root/opt/'
+    working_dir: "/root/opt/"
     tty: true
     volumes:
       - ./python3:/root/opt
     #docker-compose exec python3 bash
     #python aaa.py
-  
+
   mySQL:
     image: mysql:5.7
     container_name: mysql
@@ -19,12 +19,18 @@ services:
       MYSQL_DATABASE: test_db
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
-      TZ: 'Asia/Tokyo'
+      TZ: "Asia/Tokyo"
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.conf
       - ./mysql/sql:/docker-entrypoint-initdb.d
+
+  vuecli:
+    container_name: vuecli
+    build: ./vuecli
+    volumes:
+      - ./vuecli/data/www:/usr/src/app
     ports:
-      - 3306:3306
-    
+      - "8080:8080"
+    tty: true
