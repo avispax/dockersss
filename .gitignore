@@ -129,3 +129,7 @@ dmypy.json
 .pyre/
 
 mySQL/data
+
+# vuecli
+
+node_modules/
