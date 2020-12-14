@@ -61,3 +61,25 @@ alpine は bash ではなく ash 採用なので。
 - cd my-test
 - npm install
 - npm run server
+
+## 5 : TypeScript
+
+TypeScript のために、まずは node とかから始めているぞい。
+
+### 5-1 : node を用意する。TypeScript は node.js で動く。
+
+1. docker-compose.yml を node 用に書く。
+2. docker-compose up -d ts
+3. docker-compose ps
+4. docker-compose exec ts bash
+
+### 5-2 : TypeScript をインストール
+
+1. npm install --save-dev ts-node typescript
+2. npm install -D typescript @types/node@latest
+3. npx tsc --init
+4. npm install -D ts-node
+
+### 5-3 : 実行
+
+1. npx ts-node file1.ts
