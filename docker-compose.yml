@@ -2,7 +2,7 @@ version: "3"
 services:
   python3:
     container_name: python3
-    restart: always
+    #    restart: always
     build: ./python3
     working_dir: "/root/opt/"
     tty: true
@@ -34,3 +34,11 @@ services:
     ports:
       - "8080:8080"
     tty: true
+
+  ts:
+    container_name: ts
+    image: node:latest
+    tty: true
+    volumes:
+      - ./ts:/usr/src/app
+    working_dir: "/usr/src/app"
