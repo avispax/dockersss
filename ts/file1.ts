@@ -9,8 +9,8 @@ function func1(aaa: string): void {
 }
 
 
-function func2(aaa: string[]): void {
-    console.log(aaa);
+function func2(s: string[]): void {
+    console.log(s);
 }
 
 function func3(aaa: string[][]): void {
@@ -65,12 +65,40 @@ function func5(aaa: string[][]): void {
 // func3(mmm);
 // func4(mmm);
 
-var mmm: string[][] = [];
-var iii: string[] = [];
-iii.push("aaa");
-iii.push("bbb");
-mmm.push(iii);
-iii = [];
-iii.push("ccccc", "444444444");
-mmm.push(iii);
-func5(mmm);
+// var mmm: string[][] = [];
+// var iii: string[] = [];
+// iii.push("aaa");
+// iii.push("bbb");
+// mmm.push(iii);
+// iii = [];
+// iii.push("ccccc", "444444444");
+// mmm.push(iii);
+// func5(mmm);
+
+// ここから連想配列
+
+// var hash1: { [key: string]: string[]} = {};
+// hash1['yyyymmdd'] = ["aaa", "bbb"];
+// console.log(hash1);
+
+// class MyClass {
+//     private name:string = "";
+    
+//     constructor(name:string) {
+//         this.name=name;
+//     }
+// }
+
+// var hhh: {[key: string]:MyClass[]} = {};
+// hhh['yyyymmdd'] = [new MyClass("aaa"), new MyClass("bbb")];
+// console.log(hhh);
+
+// 非同期その1 : Timer
+// console.log("before");
+
+// setTimeout(() => {
+//     console.log("time has come!");
+
+// }, 1000);
+// console.log("after")
+
