@@ -19,7 +19,8 @@ Docker-compose はまだ作ってないけど。
 1. docker-compose build mySQL
 2. docker-compose up -d mySQL
 3. docker-compose ps
-4. docker-compose exec mySQL bash
+4. ここでDocker for Windows で インスタンスをスタートする
+5. docker-compose exec mySQL bash
 
 ### 3-2 : mySQL を動かす
 
