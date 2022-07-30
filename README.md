@@ -6,7 +6,17 @@ docker は docker-compose.yml を使いながらやろうかな。
 そういう性質でやるので、Dockerfile とそのデータは各ディレクトリ内だけで完結してくれると助かるっす。
 プロセス単位でなんか連携するとかなら Data 部を外に出してもいいけど。
 
+dockersss の sss というネーミングに意味はない。というか、（あー名前なんにしよ）とか悩んでるときに s キーが押しっぱなしになって、まぁこれでいいかという産物。
+
 ## 1 : とりあえず python3 を適当に定義。
+
+### 1-1 : やること。
+
+1. docker compose build python3
+2. docker compose up -d python3
+3. docker compose ps
+4. docker compose exec python3 bash
+5. docker compose stop python3
 
 ## 2 : Rust もこっちに移植。
 
@@ -64,9 +74,11 @@ alpine は bash ではなく ash 採用なので。
 
 ## 5 : TypeScript
 
-TypeScript のために、まずは node とかから始めているぞい。
+TypeScript を docker 内で動かすために、node の docker を用意するところから始める必要あり。
+TypeScript は node.js で動くんで。
+というわけで、実質、Linux に入って、ただ node.js と TypeScript を動かすだけの状況。
 
-### 5-1 : node を用意する。TypeScript は node.js で動く。
+### 5-1 : node を用意する。
 
 1. docker-compose.yml を node 用に書く。
 2. docker-compose up -d ts
@@ -83,3 +95,27 @@ TypeScript のために、まずは node とかから始めているぞい。
 ### 5-3 : 実行
 
 1. npx ts-node file1.ts
+
+## 6 : Ruby 環境
+
+書籍「Ruby によるデザインパターン」のお勉強用。
+他のと docker と同じく、ruby がインストールされた linux を動かしているだけ。
+仮想環境って linux だから。
+
+### 6-1. やったこと
+
+Gemfile、必要らしい。
+Gemfile.lock 必要らしい。
+
+### 6-2. 動かし方
+
+- docker compose run ruby bash
+
+python みたいにやれないんだよねぇ。
+常に新しいインスタンス作っては消すという感じの挙動。
+
+### 6-3. この後
+
+謎の力でディレクトリ Ruby と docker 内はマウントされてるので、Ruby-src 内のファイルを更新したら docker 内も即時反映される。  
+あとは上のコマンドで入っているターミナルで、適当に「ruby hello.rb」みたいな感じにしたら Ruby が実行される。  
+すげぇ時代だわ。

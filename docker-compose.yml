@@ -8,7 +8,7 @@ services:
     tty: true
     volumes:
       - ./python3:/root/opt
-    #docker-compose exec python3 bash
+    #docker compose run python3 bash
     #python aaa.py
 
   mySQL:
@@ -42,3 +42,12 @@ services:
     volumes:
       - ./ts:/usr/src/app
     working_dir: "/usr/src/app"
+
+  ruby:
+    container_name: ruby
+    build: ./Ruby
+    volumes:
+      - ./ruby:/usr/src/app
+    working_dir: "/usr/src/app"
+    #docker compose run ruby bash
+    #ruby 1.rb
