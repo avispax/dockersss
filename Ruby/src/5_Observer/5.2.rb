@@ -62,7 +62,6 @@ taxman = TaxMan.new
 yama.add_observer(taxman)
 
 # 山岸祐也を昇給させる
-
 yama.salary = 50000
 
 # output
