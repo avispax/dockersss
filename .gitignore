@@ -133,3 +133,7 @@ mySQL/data
 # vuecli
 
 node_modules/
+
+# mysql
+
+mySQL2/mysql/

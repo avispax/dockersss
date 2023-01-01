@@ -1,4 +1,3 @@
-version: "3"
 services:
   python3:
     container_name: python3
@@ -26,8 +25,28 @@ services:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.conf
       - ./mysql/sql:/docker-entrypoint-initdb.d
 
-  vuecli:
-    container_name: vuecli
+  # Golang勉強用
+  mySQL2:
+    image: mysql:5.7
+    container_name: mysql-for-go # Dockerではこれが割りと表示される。CLI系はこれか、「mySQL2」を使用すること。
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --sql-mode=ONLY_FULL_GROUP_BY,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    environment:
+      MYSQL_ROOT_USER: ${ROOTUSER} # MySQL のルートユーザー名。このへんは全部「.env」を参照している。
+      MYSQL_ROOT_PASSWORD: ${ROOTPASS} # MySQL のルートユーザーのパスワード
+      MYSQL_DATABASE: ${DATABASE} # MySQL に用意されている初期データベースの名前
+      MYSQL_USER: ${MYSQL_USERNAME} # MySQL のユーザー名
+      MYSQL_PASSWORD: ${MYSQL_USERPASS} # MySQL のユーザーパスワード
+      TZ: 'Asia/Tokyo'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mySQL2/mysql:/var/lib/mysql # これでディレクトリmySQL2/mysqlと/var/lib/mysqlが同期をとる。同期をとるとDocker内部のデータがこっちにも来るので、ファイルが増えたようになる。
+      - ./mySQL2/sql:/var/lib/mysql/sql
+
+  vuecli:  #   container_name: vuecli
     build: ./vuecli
     volumes:
       - ./vuecli/data/www:/usr/src/app

@@ -16,10 +16,10 @@ Docker-compose はまだ作ってないけど。
 
 ### 3-1 : 起動～中に入る
 
-1. docker-compose build mySQL
-2. docker-compose up -d mySQL
-3. docker-compose ps
-4. docker-compose exec mySQL bash
+1. docker compose build mySQL
+2. docker compose up -d mySQL
+3. docker compose ps
+4. docker compose exec mySQL bash
 
 ### 3-2 : mySQL を動かす
 
@@ -27,6 +27,7 @@ Docker-compose はまだ作ってないけど。
 2. docker ← パスワード入力
 3. show databases;
 4. show tables;
+5. use test_db;
 
 3.はあると思うけど、4 は 0 件のハズ。
 
